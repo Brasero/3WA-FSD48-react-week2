@@ -11,6 +11,7 @@ function NavBar() {
                 Home
             </NavLink>
             <NavLink to={'/client'}>Client</NavLink>
+            <NavLink to={'/add'}>Ajouter</NavLink>
         </nav>
     )
 }
