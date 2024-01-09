@@ -5,13 +5,16 @@ function NavBar() {
 
     return (
         <nav>
-            <NavLink to={'/'}
+            <NavLink
+                end
+                to={'/'}
                 className={({isActive}) => isActive && 'active'}
             >
                 Home
             </NavLink>
-            <NavLink to={'/client'}>Client</NavLink>
-            <NavLink to={'/add'}>Ajouter</NavLink>
+            <NavLink end to={'/client'}>Client</NavLink>
+            <NavLink end to={'/add'}>Ajouter</NavLink>
+            <NavLink to={"/dashboard"}>Dashboard</NavLink>
         </nav>
     )
 }

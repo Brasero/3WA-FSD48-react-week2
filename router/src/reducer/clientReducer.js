@@ -1,3 +1,5 @@
+let id = 0;
+
 
 const initialClient = {
     name: "",
@@ -26,7 +28,7 @@ const clientReducer = (state,action) => {
         case 'ADD_CLIENT':
             return {
                 ...state,
-                clients: state.clients.concat([state.client]),
+                clients: state.clients.concat([{...state.client, id: id++}]),
                 client: {...initialClient}
             }
 

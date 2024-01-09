@@ -1,4 +1,5 @@
 import PageWrapper from "../component/PageWrapper.jsx";
+import {NavLink} from "react-router-dom";
 
 function Client({clients = []}) {
 
@@ -7,10 +8,13 @@ function Client({clients = []}) {
             <h1>Clients</h1>
             {
                 clients.length > 0 && (
-                    <ul>
+                    <ul style={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
                         {
                             clients.map((client, index) => {
-                                return <li key={index}>{client.name}</li>
+                                return <NavLink to={`/client/${client.id}`} key={index}>{client.name}</NavLink>
                             })
                         }
                     </ul>
