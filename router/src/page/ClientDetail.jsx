@@ -1,9 +1,13 @@
 import PageWrapper from "../component/PageWrapper.jsx";
 import {useParams, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {selectClients} from "../store/selector/index.js";
 
-function ClientDetail({clients}) {
+function ClientDetail() {
 
     const naviguate = useNavigate()
+
+    const clients = useSelector(selectClients)
 
     const {id} = useParams()
 

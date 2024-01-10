@@ -1,3 +1,5 @@
+import {ADD_CLIENT, SET_CLIENT} from "../actions/index.js";
+
 let id = 0;
 
 
@@ -16,7 +18,7 @@ const initialState = {
 const clientReducer = (state = initialState ,action) => {
 
     switch (action.type) {
-        case 'CLIENT/SET_CLIENT':
+        case SET_CLIENT:
             return {
                 ...state,
                 client: {
@@ -25,7 +27,7 @@ const clientReducer = (state = initialState ,action) => {
                 }
             }
 
-        case 'ADD_CLIENT':
+        case ADD_CLIENT:
             return {
                 ...state,
                 clients: state.clients.concat([{...state.client, id: id++}]),

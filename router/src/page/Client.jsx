@@ -1,7 +1,11 @@
 import PageWrapper from "../component/PageWrapper.jsx";
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {selectClients} from "../store/selector/index.js";
 
-function Client({clients = []}) {
+function Client() {
+
+    const clients = useSelector(selectClients)
 
     return (
         <PageWrapper>

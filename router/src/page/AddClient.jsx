@@ -1,12 +1,17 @@
 import PageWrapper from "../component/PageWrapper.jsx";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {selectClient} from "../store/selector/index.js";
+import {addClientAction, setClientAction} from "../store/actions/index.js";
 
 
-function AddClient({client, dispatch}) {
+function AddClient() {
 
     const [message, setMessage] = useState('')
     const naviguate = useNavigate()
+    const dispatch = useDispatch();
+    const client = useSelector(selectClient)
 
     const genderType = [
         {
@@ -26,13 +31,7 @@ function AddClient({client, dispatch}) {
     const handleChange = (e) => {
         const {name, value} = e.target
         setMessage('');
-        dispatch({
-            type: 'SET_CLIENT',
-            payload: {
-                name,
-                value
-            }
-        })
+        dispatch(setClientAction(name, value))
     }
 
     const handleSubmit = (e) => {
@@ -43,7 +42,7 @@ function AddClient({client, dispatch}) {
             return
         }
         setMessage('')
-        dispatch({type: 'ADD_CLIENT'})
+        dispatch(addClientAction())
         naviguate('/client', {replace: true})
         // il est possible de passer -1 en paramètre ce qui aura pour effet de revenir en arrière d'une page
     }
