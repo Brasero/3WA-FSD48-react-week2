@@ -25,3 +25,29 @@ export const addClientAction = () => {
         type: ADD_CLIENT
     }
 }
+
+export const DELETE_CLIENT = 'DELETE_CLIENT';
+
+export const deleteClientAction = (id) => {
+    return {
+        type: DELETE_CLIENT,
+        payload: id
+    }
+}
+
+export const REVERSE_CLIENT = 'REVERSE_CLIENT';
+
+export const reverseClientAction = () => {
+    return {
+        type: REVERSE_CLIENT
+    }
+}
+
+export const SET_FILTER = 'SET_FILTER';
+
+export const setFilterAction = (filter) => {
+    return {
+        type: SET_FILTER,
+        payload: filter
+    }
+}

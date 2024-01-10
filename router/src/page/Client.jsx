@@ -1,15 +1,42 @@
 import PageWrapper from "../component/PageWrapper.jsx";
-import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {selectClients} from "../store/selector/index.js";
+import {useSelector, useDispatch} from "react-redux";
+import {
+    selectClients,
+    selectClientWithFilter,
+    selectClientWithParam,
+    selectGenderFilter
+} from "../store/selector/index.js";
+import ClientItem from "../component/ClientItem.jsx";
+import {reverseClientAction, setFilterAction} from "../store/actions/index.js";
+import {genderType} from "../constant/gender.js";
 
 function Client() {
 
-    const clients = useSelector(selectClients)
+    const filter = useSelector(selectGenderFilter)
+    const clients = useSelector(selectClientWithParam(filter))
+    const dispatch = useDispatch()
+
+    const onReverse = () => {
+        dispatch(reverseClientAction())
+    }
+
+    const onFilterChange = (e) => {
+        const {value} = e.target
+        dispatch(setFilterAction(value))
+    }
 
     return (
         <PageWrapper>
             <h1>Clients</h1>
+            <button onClick={onReverse}>Invérser la liste</button>
+            <select value={filter} onChange={onFilterChange}>
+                <option value={''}>Aucun</option>
+                {
+                    genderType.map(gender => {
+                        return <option key={`gender-${gender.value}`} value={gender.value}>{gender.label}</option>
+                    })
+                }
+            </select>
             {
                 clients.length > 0 && (
                     <ul style={{
@@ -18,7 +45,7 @@ function Client() {
                     }}>
                         {
                             clients.map((client, index) => {
-                                return <NavLink to={`/client/${client.id}`} key={index}>{client.name}</NavLink>
+                                return <ClientItem key={`client-${client.id}`} id={client.id} name={client.name} />
                             })
                         }
                     </ul>

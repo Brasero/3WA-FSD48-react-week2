@@ -1,4 +1,4 @@
-import {ADD_CLIENT, SET_CLIENT} from "../actions/index.js";
+import {ADD_CLIENT, DELETE_CLIENT, REVERSE_CLIENT, SET_CLIENT, SET_FILTER} from "../actions/index.js";
 
 let id = 0;
 
@@ -11,7 +11,8 @@ const initialClient = {
 
 const initialState = {
     client: initialClient,
-    clients: []
+    clients: [],
+    filter: ''
 }
 
 
@@ -32,6 +33,24 @@ const clientReducer = (state = initialState ,action) => {
                 ...state,
                 clients: state.clients.concat([{...state.client, id: id++}]),
                 client: {...initialClient}
+            }
+
+        case DELETE_CLIENT:
+            return {
+                ...state,
+                clients: state.clients.filter((client) => client.id !== action.payload)
+            }
+
+        case REVERSE_CLIENT:
+            return {
+                ...state,
+                clients: [...state.clients.reverse()]
+            }
+
+        case SET_FILTER:
+            return {
+                ...state,
+                filter: action.payload
             }
 
         default:

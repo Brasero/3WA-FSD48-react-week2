@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectClient} from "../store/selector/index.js";
 import {addClientAction, setClientAction} from "../store/actions/index.js";
+import {genderType} from "../constant/gender.js";
 
 
 function AddClient() {
@@ -13,20 +14,7 @@ function AddClient() {
     const dispatch = useDispatch();
     const client = useSelector(selectClient)
 
-    const genderType = [
-        {
-            value: 'Mr',
-            label: 'Monsieur'
-        },
-        {
-            value: 'Mme',
-            label: 'Madame'
-        },
-        {
-            value: 'other',
-            label: 'Autre'
-        }
-    ]
+
 
     const handleChange = (e) => {
         const {name, value} = e.target
