@@ -5,7 +5,16 @@ const initialState = {
         name: '',
         age: ''
     },
-    knights: [],
+    knights: [
+        {
+            name: "Dartagnan",
+            age: 25
+        },
+        {
+            name: "Momtmerrat",
+            age: 45
+        }
+    ],
     message: ''
 }
 

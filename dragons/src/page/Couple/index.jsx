@@ -25,8 +25,6 @@ function Couple () {
             return
         }
         dispatch(addCoupleAction({knight: selectedKnight, dragon: selectedDragon}))
-        dispatch(deleteKnightAction(selectedKnight))
-        dispatch(deleteDragonAction(selectedDragon))
     }
 
     return (

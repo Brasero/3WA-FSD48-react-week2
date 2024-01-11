@@ -9,8 +9,6 @@ function CoupleItem({couple}) {
 
     const handleDelete = () => {
         dispatch(deleteCoupleAction(couple))
-        dispatch(reAddKnightAction(couple.knight))
-        dispatch(reAddDragonAction(couple.dragon))
     }
 
     return (

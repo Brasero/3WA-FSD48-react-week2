@@ -5,7 +5,16 @@ const initialState = {
         name: "",
         age: ""
     },
-    dragons: [],
+    dragons: [
+        {
+            name: "Trivanio",
+            age: 12
+        },
+        {
+            name: "Deballa",
+            age: 23
+        }
+    ],
     message: ""
 }
 
